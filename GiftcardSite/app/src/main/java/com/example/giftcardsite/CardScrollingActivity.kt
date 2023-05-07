@@ -56,7 +56,7 @@ class CardScrollingActivity : AppCompatActivity(), SensorEventListener, Location
             }
             startActivity(intent)
         }
-        var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("http://appsec.moyix.net").addConverterFactory(
+        var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("https://appsec.moyix.net").addConverterFactory(
             GsonConverterFactory.create())
         var retrofit: Retrofit = builder.build()
         var client: CardInterface = retrofit.create(CardInterface::class.java)

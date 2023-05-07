@@ -58,7 +58,7 @@ class ProductScrollingActivity : AppCompatActivity(), SensorEventListener, Locat
             startActivity(intent)
         }
         //var productList: List<Product?>? = null
-        var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("http://appsec.moyix.net").addConverterFactory(
+        var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("https://appsec.moyix.net").addConverterFactory(
                 GsonConverterFactory.create())
         var retrofit: Retrofit = builder.build()
         var client: ProductInterface = retrofit.create(ProductInterface::class.java)
