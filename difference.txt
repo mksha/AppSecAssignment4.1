@@ -1,0 +1,39 @@
+## Part-2.1: What's the difference?
+
+1.  What are the two types of Intents?
+   
+  Explicit Intents:
+	  They have specified a component (via setComponent(ComponentName), or setClass(Context, Class)), which provides the exact class to be run.
+	
+  Implicit Intents:
+	  They have not specified a component; instead, they must include enough information for the system to determine which of the available components is best to run for that intent.
+
+2. Which of the two types of Intents is (generally) more secure?
+    Explicit Intents are more secure because they start a specific component within an application by explicitly specifying the target component's package name and class name. This means that the Intent will only be delivered to the specific component it is intended for, and it cannot be intercepted by any other component.
+
+3. What type of Intent is shown on lines 69 to 73 of SecondFragment.kt?
+    Implicit intent, because a specific component is not specified but its left on the system to choose appropriate component based on data provided.
+
+4. What type of Intent is shown on lines 68 to 70 of ThirdFragment.kt?
+    Explicit Intent, because a specific component `ProductScrollingActivity` is called.
+
+5. Which of these two Intents is the proper way to do an Intent?
+    Explicit intent is the the proper way to do an intent because its more specific and secure.
+
+
+Intent in SecondFrangment.kt is not correct because we are using implicit intent but to make it secure we should use explicit intent. We want to browse the gift cards so rather than exposing whole giftcard json response, we can just use a specific component called `CardScrollingActivity` to allow the use to select a card. That will stop the expose of addition information to other components as well.
+
+That can be done by replacing the below code 
+```kotlin
+var intent = Intent(Intent.ACTION_VIEW)
+intent.type = "text/giftcards_browse"
+intent.data = Uri.parse("https://appsec.moyix.net/api/index")
+```
+
+by 
+
+```kotlin
+var intent = Intent(activity, CardScrollingActivity::class.java)
+```
+
+This will only expose a list of cards so user can choose not all the details that are not meant to show to user.

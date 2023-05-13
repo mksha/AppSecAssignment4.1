@@ -1,0 +1,27 @@
+# Part 4: Oops, was that card yours?
+
+## Vulnerability:
+
+There exists a vulnerability in the REST API that allows users to GiftCards that do not belong to them.
+
+## Identifying the cause of the vulnerability
+
+Rest API exposes an endpoint "/api/use/{card_number}" with PUT method, that internally calls useCard method, that takes
+a card number and authHeader as input. This endpoint can be used to use a gift card. Now the
+issue is, user can use any gift card, even the card that does not belongs to him. The reason behind this issue
+is that we only validate the authorization token key and the gift card id. We dont check the mapping of a user identity with a card number
+that cause to have gaps where an attacker who had valid token and card number can consume any card that even
+does not belong to him. We dont have a authentication mechanism in place in usCard method.
+
+## Potential Solution:
+
+To solve this problem we need to have a relationship mapping of user and its cards. Ideally we should have 
+a logic where based on the auth token and card number, we should be able to verify that the requested card
+is associated with the user that is trying to use it.
+
+One solution could be using the user token and auth token mapping to know if the card belong to the card cosumer.
+Second solution caould be to verify the card's owner id with the current logged in user id,so we can make
+sure that this card belons to the current signed user.
+
+Once we have the logic that will make sure we have both authentication and authrization enabled in context of
+user id and card number, then we should be good.

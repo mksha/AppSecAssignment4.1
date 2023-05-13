@@ -1,0 +1,40 @@
+# Part 5: Privacy is Important
+
+Our  goal is to remove all privacy invasive code. This is done by removing all metric collecting code,
+all areas that needlessly interact with sensors, and all permissions that are not needed for the basic
+functionality of the application (buying, browsing, and using gift cards).
+
+## Check for removal of unneeded permissions in Android Manifest
+
+To remove the additional permissiongs for the application we needed to remove `andriod-permissions` from 
+AndriodManifest.xml(GiftcardSite/app/src/main/AndroidManifest.xml).  
+Permissions like, android.permission.ACCESS_NETWORK_STATE, ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION are not needed.
+
+To make sure we don't allow other components/apps to call our app intents, we also need to remove all intent-filters
+from all activities, or in another words make sure to delete the `Default` category because that is what allows the
+external componetns to access the application components. Apart from that we also need to set the `andrioid:exported` to "false"
+at all places.
+
+# Check for removal of interaction with sensors
+
+Issue is sensors interact to application back and forth that forward user details back to server
+that we dont want to do that so we have removed all the sensor related code from the files 
+`GiftcardSite/app/src/main/java/com/example/giftcardsite/ProductScrollingActivity.kt` and `GiftcardSite/app/src/main/java/com/example/giftcardsite/CardScrollingActivity.kt`.
+
+Similarly user location is also being traced by the application so we have removed all location relatd calls and
+code block frmo files `ProductScrollingActivity.kt` and `CardScrollingActivity.kt`.
+
+# Check for removal of metric collection API calls
+
+In the app, we are collecting the multiple user activity and data in form of metric.
+But we dont want to have those things because we dont want to voilet any data regulation rules.
+
+To fix it, we have removed the UserInterface that is part of `GiftcardSite\app\src\main\java\com\example\giftcardsite\api\service\UserInfo.kt` Interface
+and its comsumer conponent `GiftcardSite\app\src\main\java\com\example\giftcardsite\api\model\Reporter`.
+
+We have removed all unnecessary code in (at least) the following files:
+
+AndroidManifest.xml
+UserInfo.kt
+CardScrollingActivity.kt
+ProductScrollingActivity.kt

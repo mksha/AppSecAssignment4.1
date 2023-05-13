@@ -1,0 +1,15 @@
+# Part-3: Can you read me out there?
+
+To enable the encryption in transit for communication, we need to replace the `http` protocol by `https` in all urls used in below files.
+1.  SecondFragment.kt
+2.  ThirdFragment.kt
+3.  CardScrollingActivity.kt
+4.  ProductScrollingActivity.kt
+5.  UseCard.kt
+6.  GetCard.kt
+7.  CardRecyclerViewAdapter.kt
+8.  RecyclerViewAdapter.kt
+9.  Reporter.kt
+10. strings.xml
+
+For Example Replace url `http://appsec.moyix.ne` by `https://appsec.moyix.ne`
