@@ -18,19 +18,19 @@
             android:name=".UseCard"
             android:label="@string/title_activity_use_card"
             android:theme="@style/Theme.GiftcardSite.NoActionBar"
-            android:exported="true">
+            android:exported="false">
         </activity>
         <activity
             android:name=".GetCard"
             android:label="@string/title_activity_get_card"
             android:theme="@style/Theme.GiftcardSite.NoActionBar"
-            android:exported="true">
+            android:exported="false">
         </activity>
         <activity
             android:name=".ProductScrollingActivity"
             android:label="@string/title_activity_scrolling"
             android:theme="@style/Theme.GiftcardSite.NoActionBar"
-            android:exported="true">
+            android:exported="false">
         </activity>
         <activity
             android:name=".MainActivity"
@@ -46,7 +46,7 @@
             android:name=".CardScrollingActivity"
             android:label="@string/title_activity_scrolling_card"
             android:theme="@style/Theme.GiftcardSite.NoActionBar"
-            android:exported="true">
+            android:exported="false">
         </activity>
     </application>
 
