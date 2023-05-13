@@ -1,0 +1,19 @@
+Shutting out the world:
+
+	- `andriod.exported="false"` (The exported attribute is used to define if an activity, service, or receiver in your app is accessible and can be launched from an external application.)
+	- We need to set andriod.exported to false globally or at each activity level.
+	- Remove intent-filter from each activity.
+
+
+## Part-2.2: Shutting out the world
+
+To shut out the world for the app we need to follow below steps:
+1. We need to remove the `<category android:name="android.intent.category.DEFAULT" />` from all activities in AndriodManifest.xml file because that is what allowing the implicit intents.
+https://developer.android.com/guide/topics/manifest/category-element. In another words remove all intent-filters from all activities.
+
+2. Set andriod.exported="false" in all activities.
+The android:exported attribute sets whether a component (activity, service, broadcast receiver, etc.) can be launched by components of other applications:
+
+If true, any app can access the activity and launch it by its exact class name.
+If false, only components of the same application, applications with the same user ID, or privileged system components can launch the activity.
+
