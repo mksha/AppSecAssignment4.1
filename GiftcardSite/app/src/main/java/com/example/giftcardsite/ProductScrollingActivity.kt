@@ -4,13 +4,6 @@ import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.hardware.Sensor
-import android.hardware.SensorEvent
-import android.hardware.SensorEventListener
-import android.hardware.SensorManager
-import android.location.Location
-import android.location.LocationListener
-import android.location.LocationManager
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -23,7 +16,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.giftcardsite.api.model.*
 import com.example.giftcardsite.api.service.ProductInterface
-//import com.example.giftcardsite.api.service.UserInfo
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -32,10 +24,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class ProductScrollingActivity : AppCompatActivity() {
     var loggedInUser: User? = null
-    private lateinit var sensorManager: SensorManager
-    private var mAccel : Sensor? = null
-    private var lastEvent : String? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
